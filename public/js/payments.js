@@ -22,7 +22,7 @@ document.getElementById("rzp-button1").onclick = async function (e) {
 
     // options
     let options = {
-      key: "rzp_test_bnWvn8yH1pEuty", // Enter the Key ID generated from the Dashboard
+      key: process.env.RP_KEY, // Enter the Key ID generated from the Dashboard
       amount,
       currency,
       name: "Acme Corp",

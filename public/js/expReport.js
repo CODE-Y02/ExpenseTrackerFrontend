@@ -16,6 +16,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
   fetchHistory(token);
 });
 
+console.log(process.env.SITE_PUBLIC_IP);
 async function fetchAllExpenses(token) {
   try {
     let response = await axios.get("http://13.230.14.1:3000/expense", {
@@ -43,7 +44,7 @@ async function fetchAllExpenses(token) {
 async function fetchHistory(token) {
   try {
     let response = await axios.get(
-      "http://13.230.14.1:3000/expense/download/history",
+      `http://13.230.14.1:3000/expense/download/history`,
       {
         headers: {
           authorization: token,
