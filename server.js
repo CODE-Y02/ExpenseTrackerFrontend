@@ -55,14 +55,8 @@ app.get("/leaderboard", (req, res) => {
   res.sendFile(path.join(__dirname, "views", "leaderboard.html"));
 });
 
-app.get("/leaderboard", (req, res) => {
-  res.sendFile(path.join(__dirname, "views", "leaderboard.html"));
-});
-app.get("/leaderboard", (req, res) => {
-  res.sendFile(path.join(__dirname, "views", "leaderboard.html"));
-});
-app.get("/leaderboard", (req, res) => {
-  res.sendFile(path.join(__dirname, "views", "leaderboard.html"));
+app.use((req, res) => {
+  res.status(404).end(`<h1>PAGE NOT FOUND </h1>`);
 });
 
 app.listen(process.env.PORT || 5000, () => {
