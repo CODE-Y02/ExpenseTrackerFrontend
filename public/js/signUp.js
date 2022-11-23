@@ -18,7 +18,7 @@ document.getElementById("form").addEventListener("submit", (e) => {
 
 async function userSignUp(userObj) {
   try {
-    await axios.post("http://13.230.14.1:3000/user/signup/", userObj);
+    await axios.post("http://52.194.252:3000/user/signup/", userObj);
 
     window.location.href = "/LogIn/logIn.html";
   } catch (error) {

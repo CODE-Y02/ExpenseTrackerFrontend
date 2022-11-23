@@ -6,7 +6,7 @@ document.getElementById("rzp-button1").onclick = async function (e) {
     const { token } = JSON.parse(localStorage.getItem("ExpenseTracker")); // get token
     // order Id from backend
     const responseFromServer = await axios.post(
-      "http://13.230.14.1:3000/payment/create/orderId",
+      "http://52.194.252:3000/payment/create/orderId",
       {
         amount: 500, // pass in rs --> backend will handle rest
       },
@@ -33,7 +33,7 @@ document.getElementById("rzp-button1").onclick = async function (e) {
         console.log(response);
 
         axios
-          .post("http://13.230.14.1:3000/payment/verify", response, {
+          .post("http://52.194.252:3000/payment/verify", response, {
             headers: {
               Authorization: token,
             },

@@ -9,7 +9,7 @@ document.getElementById("form").addEventListener("submit", (e) => {
 async function sendPasswordResetReq(email) {
   try {
     let res = await axios.post(
-      "http://13.230.14.1:3000/password/forgotpassword",
+      "http://52.194.252:3000/password/forgotpassword",
       { email }
     );
 

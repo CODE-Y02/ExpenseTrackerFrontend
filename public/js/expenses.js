@@ -55,7 +55,7 @@ async function fetchExpenses(page = 1, limit) {
     );
 
     let res = await axios.get(
-      `http://13.230.14.1:3000/expense?page=${page}&limit=${limit}`,
+      `http://52.194.252:3000/expense?page=${page}&limit=${limit}`,
       {
         headers: {
           Authorization: token,
@@ -109,14 +109,14 @@ async function createOrUpdateExpense(e) {
       // console.log(editId);
       //edit // put request
 
-      await axios.put(`http://13.230.14.1:3000/expenses/${editId}`, expenseObj);
+      await axios.put(`http://52.194.252:3000/expenses/${editId}`, expenseObj);
       fetchExpenses(1);
       editId = undefined;
     } else {
       // try {
       //post
       let response = await axios.post(
-        `http://13.230.14.1:3000/expense/addExpense`,
+        `http://52.194.252:3000/expense/addExpense`,
         expenseObj,
         {
           headers: {
@@ -161,7 +161,7 @@ async function delExp(id) {
   //delete
   try {
     await axios.delete(
-      `http://13.230.14.1:3000/expense/delete/${id}`,
+      `http://52.194.252:3000/expense/delete/${id}`,
 
       {
         headers: {
@@ -187,7 +187,7 @@ async function editExp(id) {
     }
 
     //get expense
-    let expenseObj = await axios.get(`http://13.230.14.1:3000/expenses/${id}`);
+    let expenseObj = await axios.get(`http://52.194.252:3000/expenses/${id}`);
     console.log(expenseObj);
 
     //set global edit id
@@ -224,7 +224,7 @@ document.getElementById("rzp-button1").onclick = async function (e) {
     const { token } = localData;
     // order Id from backend
     const responseFromServer = await axios.post(
-      "http://13.230.14.1:3000/payment/create/orderId",
+      "http://52.194.252:3000/payment/create/orderId",
       {
         amount: 500, // pass in rs --> backend will handle rest
       },
@@ -251,7 +251,7 @@ document.getElementById("rzp-button1").onclick = async function (e) {
 
         axios
           .post(
-            "http://13.230.14.1:3000/payment/verify",
+            "http://52.194.252:3000/payment/verify",
             { ...response, receipt },
             {
               headers: {
