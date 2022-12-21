@@ -16,10 +16,10 @@ window.addEventListener("DOMContentLoaded", (e) => {
   fetchHistory(token);
 });
 
-console.log(process.env.SITE_PUBLIC_IP);
+// console.log(process.env.SITE_PUBLIC_IP);
 async function fetchAllExpenses(token) {
   try {
-    let response = await axios.get("http://52.194.252:3000/expense", {
+    let response = await axios.get("http://localhost:3000/expense", {
       headers: {
         authorization: token,
       },
@@ -44,7 +44,7 @@ async function fetchAllExpenses(token) {
 async function fetchHistory(token) {
   try {
     let response = await axios.get(
-      `http://52.194.252:3000/expense/download/history`,
+      `http://localhost:3000/expense/download/history`,
       {
         headers: {
           authorization: token,
@@ -58,12 +58,12 @@ async function fetchHistory(token) {
     historyTableBody.innerHTML = "";
 
     response.data.history.forEach((downloadObj, index) => {
-      let { fileName, fileUrl, createdAt } = downloadObj;
+      let { fileName, fileUrl, downloadedAt } = downloadObj;
 
       // createdAt = createdAt.substring(0, 10);
       // console.log(fileName, fileUrl, createdAt);
 
-      addHistoryInTable(createdAt, fileUrl, index);
+      addHistoryInTable(downloadedAt, fileUrl, index);
 
       // createExpenseIntable(createdAt, category, expenseAmount, description);
     });
@@ -72,7 +72,7 @@ async function fetchHistory(token) {
   }
 }
 
-function createExpenseIntable(date, Category, Expense, Description) {
+function createExpenseIntable(date = null, Category, Expense, Description) {
   let td = document.getElementById("table-data-body");
   let newRow = `
         <tr>
@@ -95,7 +95,7 @@ async function downloadFile() {
   const { token } = JSON.parse(localStorage.getItem("ExpenseTracker"));
 
   try {
-    let response = await axios.get("http://52.194.252:3000/expense/download", {
+    let response = await axios.get("http://localhost:3000/expense/download", {
       headers: {
         authorization: token,
       },
@@ -103,11 +103,11 @@ async function downloadFile() {
 
     console.log(response);
 
-    let a = document.createElement("a");
+    // let a = document.createElement("a");
 
-    a.href = response.data.fileUrl;
-    a.download = response.data.fileName;
-    a.click();
+    // a.href = response.data.fileUrl;
+    // a.download = response.data.fileName;
+    // a.click();
 
     fetchHistory(token);
   } catch (error) {
