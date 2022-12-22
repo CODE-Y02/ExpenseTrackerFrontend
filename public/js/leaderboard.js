@@ -16,7 +16,7 @@ async function getleaderBoard(token) {
     );
 
     // displaying each
-    // console.log(usersInLeaderboard);
+    console.log("featched leaderboard    ===> ", usersInLeaderboard);
 
     let list = document.getElementById("leaderboard-list");
 
@@ -24,9 +24,13 @@ async function getleaderBoard(token) {
     const { leaderboard, requestUserId } = usersInLeaderboard.data;
 
     for (let i = 0; i < leaderboard.length; i++) {
-      console.log(leaderboard[i]);
+      // console.log(leaderboard[i]);
       let isCurrUser = false;
-      const { userName, userId, totalExpenses } = leaderboard[i];
+      // const { userName, userId, totalExpenses } = leaderboard[i];
+
+      const userName = leaderboard[i].name;
+      const userId = leaderboard[i]._id;
+      const totalExpenses = leaderboard[i].expenseDetails.total;
       if (requestUserId == userId) isCurrUser = true;
 
       createUserInLeaderBoard(
@@ -43,7 +47,7 @@ async function getleaderBoard(token) {
 }
 
 function createUserInLeaderBoard(rank, name, totalExp, id, isCurrUser = false) {
-  //   console.log(rank, name, totalExp, id, isCurrUser);
+  console.log(rank, name, totalExp, id, isCurrUser);
   let li = document.createElement("li");
 
   li.id = `u${id}`;
@@ -54,7 +58,7 @@ function createUserInLeaderBoard(rank, name, totalExp, id, isCurrUser = false) {
     <span class="rank"> rank = ${rank} </span>
     <span class="name"> name = ${name} </span>
     <span class="exp"> exp = ${totalExp} </span>
-    <button onclick="fetchUser(${id})"> more </button>
+    <button onclick="fetchUser('${id}')"> more </button>
   `;
 
   let list = document.getElementById("leaderboard-list");
@@ -68,7 +72,7 @@ async function fetchUser(userId) {
     let response = await axios.post(
       "http://localhost:3000/leaderboard/showUser",
 
-      { userId },
+      { userId: userId },
       {
         headers: {
           Authorization: token,
@@ -78,7 +82,7 @@ async function fetchUser(userId) {
 
     console.log(response);
 
-    let expenseArr = response.data.usersExp;
+    let expenseArr = response.data.usersExp.expenseDetails.expenses;
     let userExpenseBox = document.getElementById("user-expense");
 
     userExpenseBox.classList.remove("hidden");

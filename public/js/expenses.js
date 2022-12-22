@@ -21,7 +21,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
   console.log(resultLim);
 
   console.log(membership);
-  if (membership === "premium") {
+  if (membership) {
     setPremiumMode();
   }
   disolayCard("Welcome to Expense tracker ", 2000);

@@ -101,13 +101,13 @@ async function downloadFile() {
       },
     });
 
-    console.log(response);
+    // console.log(response);
 
-    // let a = document.createElement("a");
+    let a = document.createElement("a");
 
-    // a.href = response.data.fileUrl;
-    // a.download = response.data.fileName;
-    // a.click();
+    a.href = response.data.fileUrl;
+    a.download = response.data.fileName;
+    a.click();
 
     fetchHistory(token);
   } catch (error) {
