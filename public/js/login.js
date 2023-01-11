@@ -14,7 +14,7 @@ document.getElementById("form").addEventListener("submit", (e) => {
 
 async function userLogin(userObj) {
   try {
-    let res = await axios.post("http://52.194.252:3000/user/signin/", userObj);
+    let res = await axios.post("http://localhost:3000/user/signin/", userObj);
     console.log(res);
 
     if (res.data.success == true) {
