@@ -19,7 +19,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
 console.log(process.env.SITE_PUBLIC_IP);
 async function fetchAllExpenses(token) {
   try {
-    let response = await axios.get("http://13.230.14.1:3000/expense", {
+    let response = await axios.get("http://52.194.252:3000/expense", {
       headers: {
         authorization: token,
       },
@@ -44,7 +44,7 @@ async function fetchAllExpenses(token) {
 async function fetchHistory(token) {
   try {
     let response = await axios.get(
-      `http://13.230.14.1:3000/expense/download/history`,
+      `http://52.194.252:3000/expense/download/history`,
       {
         headers: {
           authorization: token,
@@ -95,7 +95,7 @@ async function downloadFile() {
   const { token } = JSON.parse(localStorage.getItem("ExpenseTracker"));
 
   try {
-    let response = await axios.get("http://13.230.14.1:3000/expense/download", {
+    let response = await axios.get("http://52.194.252:3000/expense/download", {
       headers: {
         authorization: token,
       },

@@ -7,7 +7,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
 async function getleaderBoard(token) {
   try {
     let usersInLeaderboard = await axios.get(
-      "http://13.230.14.1:3000/leaderboard/showAll",
+      "http://52.194.252:3000/leaderboard/showAll",
       {
         headers: {
           Authorization: token,
@@ -66,7 +66,7 @@ async function fetchUser(userId) {
   try {
     const { token } = JSON.parse(localStorage.getItem("ExpenseTracker"));
     let response = await axios.post(
-      "http://13.230.14.1:3000/leaderboard/showUser",
+      "http://52.194.252:3000/leaderboard/showUser",
 
       { userId },
       {
